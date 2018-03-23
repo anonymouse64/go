@@ -16,8 +16,9 @@ const (
 
 var randomNumber uint32
 var armArch uint8 = 6 // we default to ARMv6
-var hwcap uint32      // set by archauxv
-var hardDiv bool      // set if a hardware divider is available
+//go:linkname cpu_hwcap internal/cpu.arm_hwcap
+var hwcap uint32 // set by archauxv
+var hardDiv bool // set if a hardware divider is available
 
 func checkgoarm() {
 	// On Android, /proc/self/auxv might be unreadable and hwcap won't
